@@ -1,0 +1,58 @@
+{%extends 'df_goods/base.html'%}
+{%block head%}
+
+<div class="navbar_con">
+    <div class="navbar clearfix">
+        <div class="subnav_con fl">
+            <h1>全部商品分类</h1>
+            <span></span>
+            <ul class="subnav">
+                <li><a href="#" class="fruit">新鲜水果</a></li>
+                <li><a href="#" class="seafood">海鲜水产</a></li>
+                <li><a href="#" class="meet">猪牛羊肉</a></li>
+                <li><a href="#" class="egg">禽类蛋品</a></li>
+                <li><a href="#" class="vegetables">新鲜蔬菜</a></li>
+                <li><a href="#" class="ice">速冻食品</a></li>
+            </ul>
+        </div>
+        <ul class="navlist fl">
+            <li><a href="">首页</a></li>
+            <li class="interval">|</li>
+            <li><a href="">手机生鲜</a></li>
+            <li class="interval">|</li>
+            <li><a href="">抽奖</a></li>
+        </ul>
+    </div>
+</div>
+{% if list == 1 %}
+<div class="breadcrumb">
+    <a href="#">全部分类</a>
+    <span>></span>
+    <a href="/list_{{goodtype.id}}_1_1">{{goodtype.ttitle}}</a>
+    {% if isDetail %}
+    <span>></span>
+    <a href="">商品详情</a>
+    {% endif %}
+</div>
+{% endif %}
+{% block detail %}
+{% endblock detail%}
+<div class="main_wrap clearfix">
+    <div class="l_wrap fl clearfix">
+        <div class="new_goods">
+            <h3>新品推荐</h3>
+            <ul>
+                {%for g in newgood%}
+                <li>
+                    <a href="/{{g.id}}"><img src="/static/{{g.gpic}}"></a>
+                    <h4><a href="/{{g.id}}">{{g.gtitle}}</a></h4>
+                    <div class="prize">￥{{g.gprice}}</div>
+                </li>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+{% block list %}
+{% endblock list %}
+</div>
+{%endblock head%}
