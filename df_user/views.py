@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from models import *
 from hashlib import sha1
 from django.http import JsonResponse
-
+from .islogin import islogin
+from df_goods.models import GoodsInfo
 
 # Create your views here.
 def register(request):
@@ -68,7 +69,7 @@ def login_handle(request):
         s1 = sha1()
         s1.update(upwd)
         if s1.hexdigest() == users[0].upwd:
-            red = HttpResponseRedirect('/user/info/')
+            red = HttpResponseRedirect('/user/info')
             # 记住用户名
             if jizhu != 0:
                 red.set_cookie('uname', uname)
@@ -86,21 +87,34 @@ def login_handle(request):
 
 
 # 登录用户中心
+@islogin
 def info(request):
     user_email = UserInfo.objects.get(id=request.session['user_id']).uemail
+
+    #最近浏览
+    goods_ids = request.COOKIES.get('goods_ids', '')
+    goods_id_list = goods_ids.split(',')
+    goods_list=[]
+    for goods_id in goods_id_list:
+        goods_list.append(GoodsInfo.objects.get(id=int(goods_id)))
+
     context = {'title': '用户中心',
                'user_email': user_email,
-               'user_name': request.session['user_name']}
+               'user_name': request.session['user_name'],
+               'page_name':1,'info':1,
+               'goods_list':goods_list}
     return render(request, 'df_user/user_center_info.html', context)
 
 
 # 订单
+@islogin
 def order(request):
-    context = {'title': '用户中心'}
+    context = {'title': '用户中心','page_name':1,'order':1}
     return render(request, 'df_user/user_center_order.html', context)
 
 
 # 收货地址
+@islogin
 def site(request):
     user = UserInfo.objects.get(id=request.session['user_id'])
     if request.method == 'POST':
@@ -110,5 +124,10 @@ def site(request):
         user.uphone = post.get('uphone')
         user.uyoubian = post.get('uyoubian')
         user.save()
-    context = {'title': '用户中心', 'user': user}
+    context = {'title': '用户中心', 'user': user,'page_name':1,'site':1}
     return render(request, 'df_user/user_center_site.html', context)
+
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')

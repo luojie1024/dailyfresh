@@ -87,4 +87,34 @@ def detail(request,id):
     context={'title':goods.gtype.ttitle,'guest_cart':1,
              'g':goods,'newgood':news,'id':id,
              'isDetail': True,'list':1,'goodtype': goodtype}
-    return render(request,'df_goods/detail.html',context)
+    response=render(request,'df_goods/detail.html',context)
+
+
+    #使用cookies记录最近浏览的商品id
+
+    #获取cookies
+    goods_ids = request.COOKIES.get('goods_ids', '')
+    #获取当前点击商品id
+    goods_id='%d'%goods.id
+    #判断cookies中商品id是否为空
+    if goods_ids!='':
+        #分割出每个商品id
+        goods_id_list=goods_ids.split(',')
+        #判断商品是否已经存在于列表
+        if goods_id_list.count(goods_id)>=1:
+            #存在则移除
+            goods_id_list.remove(goods_id)
+        #在第一位添加
+        goods_id_list.insert(0,goods_id)
+        #判断列表数是否超过5个
+        if len(goods_id_list)>=6:
+            #超过五个则删除第6个
+            del goods_id_list[5]
+        #添加商品id到cookies
+        goods_ids=','.join(goods_id_list)
+    else:
+        #第一次添加，直接追加
+        goods_ids=goods_id
+    response.set_cookie('goods_ids',goods_ids)
+
+    return response
