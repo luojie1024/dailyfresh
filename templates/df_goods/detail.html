@@ -1,10 +1,13 @@
 {% extends 'df_goods/base.html'%}
 {% block head %}
 <script>
- function add(){
+function add(){
+ 	//获取数量
+   count = $(this).prev().find('input').val();
    num = parseInt($('.num_show').val());
+   del=confirm(count);
    if(num < 99){
-     $('.num_show').val(num+1);
+     $('.num_show').val(count+1);
    }
    $('.num_show').blur();
  }
@@ -40,7 +43,29 @@
      });
    });
 
- });
+
+   /* 新增*/
+   $('.add').click(function(){
+     //获取数量
+   count = $(this).prev().find('input').val();
+   num = parseInt($('.num_show').val());
+   del=confirm('确定要删除吗？');
+   if(num < 99){
+     $('.num_show').val(count+1);
+   }
+   $('.num_show').blur();
+   });
+
+   /* 减少*/
+   $('.minus').click(function(){
+     num = parseInt($('.num_show').val());
+   if(num > 1){
+     $('.num_show').val(num-1);
+   }
+   $('.num_show').blur();
+   });
+
+ })
 </script>
 {% endblock head%}
 
@@ -53,21 +78,25 @@
 			<h3>{{g.gtitle}}</h3>
 			<p>{{g.gjianjie}}</p>
 			<div class="prize_bar">
-				<span class="show_pirze">¥<em>{{g.gprice}}</em></span>
+				<span class="show_pirze">¥<em id="gprice">{{g.gprice}}</em></span>
 				<span class="show_unit">单  位：{{g.gunit}}</span>
 			</div>
 			<div class="goods_num clearfix">
 				<div class="num_name fl">数 量：</div>
 				<div class="num_add fl">
-					<input type="text" class="num_show fl" value="1">
-					<a href="javascript:add();" class="add fr">+</a>
-					<a href="javascript:minus();" class="minus fr">-</a>
+					<input type="text" class="num_show fl" value="1" id="num_show">
+					<a href="javascript:;" class="add fr">+</a>
+					<a href="javascript:;" class="minus fr">-</a>
 				</div> 
 			</div>
-			<div class="total">总价：<em>{{g.gprice}}</em></div>
+			<div class="total">总价：<em id="gtotal">{{g.gprice}}</em></div>
 			<div class="operate_btn">
 				<a href="javascript:;" class="buy_btn">立即购买</a>
-				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
+				{% if request.session.user_name|default:'' != '' %}
+					<a href="/cart/add{{g.id}}_1" class="add_cart" id="add_cart">加入购物车</a>
+				{% else %}
+      				<a href="/user/login/" class="add_cart" id="add_cart">加入购物车</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

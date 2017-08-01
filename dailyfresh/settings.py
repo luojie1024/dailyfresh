@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'df_user',
     'df_goods',
+    'df_order',
+    'df_cart',
     'tinymce',
 ]
 
