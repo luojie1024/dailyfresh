@@ -130,6 +130,7 @@
 		<li class="col06">操作</li>
 	</ul>
 {%for cart in carts%}
+<form action="/order/" method="GET">
 	<ul class="cart_list_td clearfix" id="{{cart.id}}">
 		<li class="col01"><input type="checkbox" name="orderid" value="{{cart.id}}" checked="" class="checkbox"></li>
 		<li class="col02"><img src="/static/{{cart.goods.gpic}}"></li>
@@ -153,6 +154,7 @@
 		<li class="col01"><input type="checkbox" name="" checked="" id="checkToggle"></li>
 		<li class="col02">全选</li>
 		<li class="col03">合计(不含运费)：<span>¥</span><em id="sumtotal"></em><br>共计<b class="countGood"></b>件商品</li>
-		<li class="col04"><a href="place_order.html">去结算</a></li>
+		<li class="col04"><input class="order" name="" type="submit" value="去结算"/></li>
 	</ul>
+</form>
 {%endblock body%}
