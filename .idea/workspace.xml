@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4afb7b36-3ccd-46a4-a4fa-532012154923" name="Default" comment="更新">
+    <list default="true" id="4afb7b36-3ccd-46a4-a4fa-532012154923" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dailyfresh/settings.py" afterPath="$PROJECT_DIR$/dailyfresh/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/df_user/views.py" afterPath="$PROJECT_DIR$/df_user/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/df_cart/views.py" afterPath="$PROJECT_DIR$/df_cart/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,16 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dailyfresh/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4386">
-              <caret line="86" column="29" lean-forward="false" selection-start-line="81" selection-start-column="7" selection-end-line="86" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/df_cart/urls.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,11 +72,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/df_goods/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="357">
               <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/df_cart/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -181,7 +180,6 @@
         <option value="$PROJECT_DIR$/df_cart/models.py" />
         <option value="$PROJECT_DIR$/templates/df_goods/base.html" />
         <option value="$PROJECT_DIR$/df_cart/urls.py" />
-        <option value="$PROJECT_DIR$/df_cart/views.py" />
         <option value="$PROJECT_DIR$/templates/df_goods/detail.html" />
         <option value="$PROJECT_DIR$/df_order/models.py" />
         <option value="$PROJECT_DIR$/df_order/url.py" />
@@ -198,6 +196,7 @@
         <option value="$PROJECT_DIR$/templates/search/indexes/df_goods/goodsinfo_text.txt" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/dailyfresh/settings.py" />
+        <option value="$PROJECT_DIR$/df_cart/views.py" />
       </list>
     </option>
   </component>
@@ -239,6 +238,11 @@
             <path>
               <item name="dailyfresh" type="b2602c69:ProjectViewProjectNode" />
               <item name="dailyfresh" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dailyfresh" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dailyfresh" type="462c0819:PsiDirectoryNode" />
+              <item name="df_cart" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -353,6 +357,14 @@
       <option name="presentableId" value="Default" />
       <updated>1501295362859</updated>
     </task>
+    <task id="LOCAL-00001" summary="更新">
+      <created>1507519669222</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1507519669222</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -527,13 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="42" column="37" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/df_cart/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="36" column="15" lean-forward="false" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -772,8 +777,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/df_goods/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="357">
           <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/df_cart/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

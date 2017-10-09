@@ -6,7 +6,7 @@ from df_user.islogin import islogin
 from models import *
 from django.http import JsonResponse
 
-# Create your views here.
+
 #购物车
 @islogin
 def cart(request):
