@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.http import HttpResponse
 from models import *
 from hashlib import sha1
 from django.http import JsonResponse
@@ -18,6 +19,7 @@ def register(request):
 
 # 登入处理
 def register_handle(requst):
+    response = HttpResponse()
     # 接收用户输入
     post = requst.POST
     uname = post.get('user_name')
@@ -26,7 +28,7 @@ def register_handle(requst):
     uemail = post.get('email')
     # 判断两次密码
     if upwd != ucpwd:
-        return redirect('/user/register/')
+        return HttpResponse("failed")
     # 加密
     s1 = sha1()
     s1.update(upwd)
@@ -38,10 +40,10 @@ def register_handle(requst):
     user.upwd = upwd2
     user.uemail = uemail
     user.save()
-
+    return HttpResponse("success")
     # 注册成功，转到登录页面
-    return redirect('/user/login/')
-
+    # return redirect('/user/login/')
+    # return JsonResponse({'status': "success"})
 
 # 判断用户是否已经存在
 def register_exist(requset):
